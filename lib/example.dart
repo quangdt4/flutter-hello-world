@@ -1,9 +1,6 @@
 void main() {
   var number = 42;
   var name = "Quang";
-  int? bien1; //co the bi null, chua can khoi tao
-  var isPublic;
-  var visibility = isPublic ? 'public' : 'private';
   print(printName(name));
   print(printName2(null));
   printInt(number);
@@ -22,3 +19,6 @@ String printName(String aName) {
 }
 
 String printName2(String? aName) => aName ?? "Guest";
+
+
+

@@ -5,23 +5,17 @@ void main() {
     print(fibonacci(i));
     a = a + fibonacci(i);
   }
-  print("Tong 10 so fibo = $a" );
+  print("Tong 10 so fibo = $a");
 }
 
-int fibonacci(int a) {
-  var b = 0;
-  var c = 1;
-  var d = 1;
-  if (a < 0) {
+int fibonacci(int n) {
+  if (n < 0) {
     return -1;
-  } else if (a == 0 || a == 1) {
-    return a;
+  } else if (n == 0 || n == 1) {
+    return n;
   } else {
-    for (var i = 2; i < a; i++) {
-      b = c;
-      c = d;
-      d = b + c;
-    }
+    var result = fibonacci(n - 1) + fibonacci(n - 2);
+
+    return result;
   }
-  return d;
 }
