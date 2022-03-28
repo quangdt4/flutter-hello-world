@@ -58,11 +58,8 @@ class _HomepageState extends State<Lesson4Homepage> {
       appBar: AppBar(),
       body: SafeArea(
         child: Center(
-            // EXPAND - FLEXIBLE
             // child: _expandFlexible(),
-            // STACK
             // child: _stack(),
-            // CARD
             child: _cardView()),
       ),
     );

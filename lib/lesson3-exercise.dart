@@ -73,10 +73,11 @@ class _HomepageState extends State<L3ExHomepage> {
                       width: 10,
                     ),
                     Flexible(
-                        child: TextField(
-                      controller: controllerGetText,
-                      decoration: const InputDecoration(hintText: "10"),
-                    )),
+                      child: TextField(
+                        controller: controllerGetText,
+                        decoration: const InputDecoration(hintText: "10"),
+                      ),
+                    ),
                     const SizedBox(
                       width: 10,
                     ),
