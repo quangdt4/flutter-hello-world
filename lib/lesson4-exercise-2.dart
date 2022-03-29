@@ -9,10 +9,7 @@ class Lesson4Exercise2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(fontFamily: "Manrope"),
-      home: const L4Ex2HomePage(),
-    );
+    return const L4Ex2HomePage();
   }
 }
 
