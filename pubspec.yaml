@@ -55,6 +55,13 @@ flutter:
   assets:
     - assets/image/ic_ferb.png
 
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/manrope_medium.ttf
+          style: normal
+          weight: 300
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
