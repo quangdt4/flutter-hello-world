@@ -54,6 +54,12 @@ flutter:
 
   assets:
     - assets/image/ic_ferb.png
+    - assets/image/bg_bangkok.jpg
+    - assets/image/bg_hanoi.jpg
+    - assets/image/bg_london.jpg
+    - assets/image/bg_moscow.jpg
+    - assets/image/bg_paris.jpg
+    - assets/image/bg_sydney.jpg
 
   fonts:
     - family: Manrope
