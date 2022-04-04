@@ -151,7 +151,8 @@ class _HomepageState extends State<L5ExHomepage> {
                   Expanded(
                     flex: 3,
                     child: Text(product.name,
-                        style: const TextStyle(color: Colors.white)),
+                        style: const TextStyle(
+                            color: Colors.white, fontFamily: "Manrope")),
                   ),
                   const Expanded(
                     flex: 1,
