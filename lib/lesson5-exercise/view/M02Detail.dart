@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/Product.dart';
-import 'M03.dart';
+import 'M03EditProduct.dart';
 
 class M02Detail extends StatelessWidget {
   Product product;
@@ -57,7 +57,7 @@ class M02Detail extends StatelessWidget {
                 var resultData = await Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
                   // do something
-                  return Screen3(data);
+                  return M03EditProduct(data);
                 }));
 
                 Navigator.pop(context, resultData);
