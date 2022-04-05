@@ -7,6 +7,8 @@ class Product {
   Product(this.name, this.image, this.price, this.favorite);
 }
 
+final List<Product> listProductWithFav = [];
+
 final List<Product> listProduct = [
   Product(
       "Nike AF1-1",
@@ -45,4 +47,9 @@ final List<Product> listProduct = [
       "http://www.airforce1.us.com/images/Air%20jordan%201%20original%20white%20purple.jpeg",
       "\$82",
       false),
+  // Product(
+  //     "Mercurial",
+  //     "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/ef6e1a58-27db-4d64-b71f-564d80e0264c/mercurial-vapor-14-elite-fg-football-boots-GzzgK8.png",
+  //     "\140",
+  //     false),
 ];

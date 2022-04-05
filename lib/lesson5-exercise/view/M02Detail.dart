@@ -50,19 +50,19 @@ class M02Detail extends StatelessWidget {
             product.price,
             style: const TextStyle(color: Colors.black, fontSize: 50),
           ),
-          ElevatedButton(
-              onPressed: () async {
-                var data = 'data from screen 2';
-
-                var resultData = await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) {
-                  // do something
-                  return M03EditProduct(data);
-                }));
-
-                Navigator.pop(context, resultData);
-              },
-              child: Text('Go to Screen 3'))
+          // ElevatedButton(
+          //     onPressed: () async {
+          //       var data = 'data from screen 2';
+          //
+          //       var resultData = await Navigator.push(context,
+          //           MaterialPageRoute(builder: (context) {
+          //         // do something
+          //         return M03EditProduct(data);
+          //       }));
+          //
+          //       Navigator.pop(context, resultData);
+          //     },
+          //     child: Text('Go to Screen 3'))
         ],
       ),
     );

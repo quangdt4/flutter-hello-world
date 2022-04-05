@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/lesson5-exercise/model/Product.dart';
 import 'package:helloworld/lesson5-exercise/view/M02Detail.dart';
+import 'package:helloworld/lesson5-exercise/view/M03EditProduct.dart';
+import 'package:helloworld/lesson5-exercise/view/M04ShoppingCart.dart';
 
 void main() {
   runApp(const M01Homepage());
@@ -29,13 +31,16 @@ class _HomepageState extends State<L5ExHomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
-      body: SafeArea(
-        child: Center(
-          child: gridView(),
+        appBar: appBar(),
+        body: SafeArea(
+          child: Center(
+            child: gridView(),
+          ),
         ),
-      ),
-    );
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.purple,
+            onPressed: onClickAddProduct,
+            child: const Icon(Icons.add)));
   }
 
   PreferredSizeWidget appBar() {
@@ -53,7 +58,30 @@ class _HomepageState extends State<L5ExHomepage> {
       ),
       actions: [
         IconButton(
-            icon: const Icon(Icons.shopping_cart),
+            icon: Stack(
+              children: [
+                const Icon(Icons.shopping_cart),
+                Positioned(
+                  right: 0.0,
+                  child: Container(
+                    height: 12,
+                    width: 12,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Text(
+                      listProductWithFav.length.toString(),
+                      style: const TextStyle(
+                        fontFamily: "Manrope",
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )
+              ],
+            ),
             onPressed: () {
               onClickShoppingCart();
             }),
@@ -125,7 +153,13 @@ class _HomepageState extends State<L5ExHomepage> {
                       ),
                       onPressed: () {
                         setState(() {
-                          product.favorite = !product.favorite;
+                          if (product.favorite) {
+                            product.favorite = false;
+                            listProductWithFav.remove(product);
+                          } else if (!product.favorite) {
+                            product.favorite = true;
+                            listProductWithFav.add(product);
+                          }
                         });
                       },
                     ),
@@ -162,7 +196,18 @@ class _HomepageState extends State<L5ExHomepage> {
   }
 
   void onClickShoppingCart() {
-    setState(() {});
+    setState(() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (c) => const M04ShoppingCart()));
+    });
+  }
+
+  void onClickAddProduct() {
+    setState(() {
+      var data = 'data ';
+      Navigator.push(
+          context, MaterialPageRoute(builder: (c) => M03EditProduct(data)));
+    });
   }
 
   void onClickMoreVert() {
