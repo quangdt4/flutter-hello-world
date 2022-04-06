@@ -70,7 +70,7 @@ class _HomepageState extends State<L5ExHomepage> {
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50)),
                     child: Text(
-                      listProductWithFav.length.toString(),
+                      listProductInCart.length.toString(),
                       style: const TextStyle(
                         fontFamily: "Manrope",
                         color: Colors.white,
@@ -152,15 +152,7 @@ class _HomepageState extends State<L5ExHomepage> {
                         color: Colors.purple,
                       ),
                       onPressed: () {
-                        setState(() {
-                          if (product.favorite) {
-                            product.favorite = false;
-                            listProductWithFav.remove(product);
-                          } else if (!product.favorite) {
-                            product.favorite = true;
-                            listProductWithFav.add(product);
-                          }
-                        });
+                        setState(() {});
                       },
                     ),
                   ),
@@ -170,12 +162,16 @@ class _HomepageState extends State<L5ExHomepage> {
                         style: const TextStyle(
                             color: Colors.white, fontFamily: "Manrope")),
                   ),
-                  const Expanded(
+                  Expanded(
                     flex: 1,
-                    child: Icon(
-                      Icons.shopping_cart,
-                      color: Colors.purple,
-                      size: 20,
+                    child: IconButton(
+                      icon: const Icon(Icons.shopping_cart,
+                          color: Colors.purple, size: 20),
+                      onPressed: () {
+                        setState(() {
+                          listProductInCart.add(product);
+                        });
+                      },
                     ),
                   )
                 ],

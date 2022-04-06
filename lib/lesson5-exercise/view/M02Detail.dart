@@ -47,7 +47,7 @@ class M02Detail extends StatelessWidget {
             height: 16,
           ),
           Text(
-            product.price,
+            "\$ ${product.price}",
             style: const TextStyle(color: Colors.black, fontSize: 50),
           ),
           // ElevatedButton(

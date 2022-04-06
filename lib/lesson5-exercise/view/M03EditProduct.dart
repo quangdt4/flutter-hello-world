@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../model/Product.dart';
 
@@ -20,6 +21,7 @@ class _M03EditProductState extends State<M03EditProduct> {
   @override
   Widget build(BuildContext context) {
     var data;
+    String url = '';
     if (widget._initialData != '') {
       data = widget._initialData;
     } else {
@@ -70,7 +72,11 @@ class _M03EditProductState extends State<M03EditProduct> {
               TextField(
                 maxLines: 1,
                 controller: _controllerPrice,
+                keyboardType: TextInputType.number,
                 style: const TextStyle(fontFamily: "Manrope", fontSize: 15),
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: const InputDecoration(hintText: "\$100"),
               ),
               const SizedBox(
@@ -94,12 +100,21 @@ class _M03EditProductState extends State<M03EditProduct> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(16)),
                       ),
                       child: Image.network(
-                        _controllerPath.text,
+                        url,
                         fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) {
+                          return Expanded(
+                            child: Container(
+                                padding: const EdgeInsets.all(10),
+                                child: const Icon(Icons.image)),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -118,6 +133,11 @@ class _M03EditProductState extends State<M03EditProduct> {
                           controller: _controllerPath,
                           style: const TextStyle(
                               fontFamily: "Manrope", fontSize: 15),
+                          onChanged: (value) {
+                            setState(() {
+                              url = value;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -134,7 +154,7 @@ class _M03EditProductState extends State<M03EditProduct> {
   void onClickSaveProduct() {
     setState(() {
       listProduct.add(Product(_controllerTitle.text, _controllerPath.text,
-          _controllerPrice.text, false));
+          int.parse(_controllerPrice.text), false));
       Navigator.pop(context);
     });
   }
