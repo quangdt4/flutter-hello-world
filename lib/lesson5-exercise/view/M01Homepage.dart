@@ -198,19 +198,18 @@ class _HomepageState extends State<L5ExHomepage> {
     setState(() {});
   }
 
-  void onClickShoppingCart() {
-    setState(() {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (c) => M04ShoppingCart()));
-    });
+  void onClickShoppingCart() async {
+    await Navigator.push(
+            context, MaterialPageRoute(builder: (c) => M04ShoppingCart()))
+        .then((value) => null);
+    setState(() {});
   }
 
-  void onClickAddProduct() {
-    setState(() {
-      var data = 'data ';
-      Navigator.push(
-          context, MaterialPageRoute(builder: (c) => M03EditProduct(data)));
-    });
+  void onClickAddProduct() async {
+    var data = 'data ';
+    await Navigator.push(
+        context, MaterialPageRoute(builder: (c) => M03EditProduct(data)));
+    setState(() {});
   }
 
   void onClickMoreVert() {
