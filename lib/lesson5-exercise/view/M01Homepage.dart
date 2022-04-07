@@ -29,6 +29,11 @@ class L5ExHomepage extends StatefulWidget {
 
 class _HomepageState extends State<L5ExHomepage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: appBar(),
@@ -152,7 +157,9 @@ class _HomepageState extends State<L5ExHomepage> {
                         color: Colors.purple,
                       ),
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          product.favorite = !product.favorite;
+                        });
                       },
                     ),
                   ),
@@ -194,7 +201,7 @@ class _HomepageState extends State<L5ExHomepage> {
   void onClickShoppingCart() {
     setState(() {
       Navigator.push(
-          context, MaterialPageRoute(builder: (c) => const M04ShoppingCart()));
+          context, MaterialPageRoute(builder: (c) => M04ShoppingCart()));
     });
   }
 

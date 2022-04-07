@@ -4,7 +4,6 @@ class Product {
   int price;
   bool favorite;
   int counter = 1;
-  int totalPrice = 1;
 
   Product(this.name, this.image, this.price, this.favorite);
 }

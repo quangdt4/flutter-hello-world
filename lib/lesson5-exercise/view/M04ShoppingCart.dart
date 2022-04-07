@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import '../model/Product.dart';
 
 class M04ShoppingCart extends StatefulWidget {
-  const M04ShoppingCart({Key? key}) : super(key: key);
+  M04ShoppingCart({Key? key}) : super(key: key);
+
+  var totalPrice = 0;
 
   @override
   State<M04ShoppingCart> createState() => _M04ShoppingCartState();
 }
 
 class _M04ShoppingCartState extends State<M04ShoppingCart> {
-  var totalPrice = 0;
+  @override
+  void initState() {
+    calTotalPrice();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,7 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(40))),
                         child: Text(
-                          "\$$totalPrice",
+                          "\$${widget.totalPrice}",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontFamily: "Manrope",
@@ -91,7 +96,7 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
   }
 
   Widget cartItem(Product product, int i) {
-    product.totalPrice = product.price * product.counter;
+    var n = product.price * product.counter;
     return Card(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -122,7 +127,7 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Total: \$${product.price} - ${product.totalPrice}',
+                  'Total: \$${product.price} - ${product.price * product.counter}',
                   style: const TextStyle(
                       fontFamily: "Manrope",
                       fontSize: 12,
@@ -151,7 +156,7 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
                     setState(() {
                       if (product.counter > 1) {
                         product.counter -= 1;
-                        totalPrice -= product.price;
+                        widget.totalPrice -= product.price;
                       }
                     });
                   },
@@ -172,7 +177,7 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
                     onTap: () {
                       setState(() {
                         product.counter++;
-                        totalPrice += product.price;
+                        widget.totalPrice += product.price;
                       });
                     }),
               ],
@@ -184,6 +189,7 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
               setState(() {
                 product.favorite = false;
                 product.counter = 1;
+                widget.totalPrice -= n;
                 listProductInCart.remove(product);
               });
             },
@@ -191,5 +197,12 @@ class _M04ShoppingCartState extends State<M04ShoppingCart> {
         ],
       ),
     );
+  }
+
+  void calTotalPrice() {
+    for (int i = 0; i < listProductInCart.length; i++) {
+      widget.totalPrice +=
+          listProductInCart[i].price * listProductInCart[i].counter;
+    }
   }
 }
