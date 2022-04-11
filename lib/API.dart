@@ -1,21 +1,23 @@
 import 'dart:convert';
 
-import 'lesson5-exercise/model/Album.dart';
+import 'lesson5-exercise/model/AlbumRes.dart';
 import 'package:http/http.dart' as http;
 
-Future<Album> fetchAlbum() async {
+import 'lesson5-exercise/model/AlbumReq.dart';
+
+Future<AlbumRes> fetchAlbum() async {
   //GET - FETCH
   final response = await http
       .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
 
   if (response.statusCode == 200) {
-    return Album.fromJson(jsonDecode(response.body));
+    return AlbumRes.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to load album');
   }
 }
 
-Future<Album> createAlbum(String title) async {
+Future<AlbumReq> createAlbum(String title) async {
   //POST
   final response = await http.post(
     Uri.parse('https://jsonplaceholder.typicode.com/albums'),
@@ -28,7 +30,7 @@ Future<Album> createAlbum(String title) async {
   );
 
   if (response.statusCode == 201) {
-    return Album.fromJson(jsonDecode(response.body));
+    return AlbumReq.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to create album.');
   }
