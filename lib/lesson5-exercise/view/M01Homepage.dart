@@ -127,69 +127,67 @@ class _HomepageState extends State<L5ExHomepage> {
   Widget productItem(Product product, int index) {
     var screenSize = MediaQuery.of(context).size;
     return GestureDetector(
-      child: InkWell(
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16.0),
-              child: Image.network(
-                listProduct[index].image,
-                width: screenSize.width / 2.0,
-                fit: BoxFit.cover,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Image.network(
+              listProduct[index].image,
+              width: screenSize.width / 2.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.7),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(12.0),
+                bottomRight: Radius.circular(12.0),
               ),
             ),
-            Container(
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.7),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(12.0),
-                  bottomRight: Radius.circular(12.0),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                    icon: Icon(
+                      product.favorite ? Icons.favorite : Icons.favorite_border,
+                      size: 20,
+                      color: Colors.purple,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        product.favorite = !product.favorite;
+                      });
+                    },
+                  ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: IconButton(
-                      icon: Icon(
-                        product.favorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        size: 20,
-                        color: Colors.purple,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          product.favorite = !product.favorite;
-                        });
-                      },
-                    ),
+                Expanded(
+                  flex: 3,
+                  child: Text(product.name,
+                      style: const TextStyle(
+                          color: Colors.white, fontFamily: "Manrope")),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                    icon: const Icon(Icons.shopping_cart,
+                        color: Colors.purple, size: 20),
+                    onPressed: () {
+                      setState(() {
+                        product.check = false;
+                        product.counter = 1;
+                        listProductInCart.add(product);
+                      });
+                    },
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Text(product.name,
-                        style: const TextStyle(
-                            color: Colors.white, fontFamily: "Manrope")),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: IconButton(
-                      icon: const Icon(Icons.shopping_cart,
-                          color: Colors.purple, size: 20),
-                      onPressed: () {
-                        setState(() {
-                          listProductInCart.add(product);
-                        });
-                      },
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
       onTap: () {
         Navigator.push(context,
