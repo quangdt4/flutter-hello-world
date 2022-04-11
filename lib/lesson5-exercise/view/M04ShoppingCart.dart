@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../model/Product.dart';
 
+/*SHOPPING CART - LIST ITEM
++ ListView item, Card
++ Visiblity widget, Undo-remove item
++ Gesture Detector - Hold item => onLongPress */
+
 class M04ShoppingCart extends StatefulWidget {
   M04ShoppingCart({Key? key}) : super(key: key);
 
@@ -13,9 +18,7 @@ class M04ShoppingCart extends StatefulWidget {
 
 class _M04ShoppingCartState extends State<M04ShoppingCart> {
   @override
-  void initState() {
-    calTotalPrice();
-  }
+  initState() => calTotalPrice();
 
   @override
   Widget build(BuildContext context) {

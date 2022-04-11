@@ -4,6 +4,10 @@ import 'package:helloworld/lesson5-exercise/view/M02Detail.dart';
 import 'package:helloworld/lesson5-exercise/view/M03EditProduct.dart';
 import 'package:helloworld/lesson5-exercise/view/M04ShoppingCart.dart';
 
+/*HOMEPAGE:
++ Appbar manu, Positioned
++ GridView item, Gesture Detector, Stack, ClipRRect*/
+
 void main() {
   runApp(const M01Homepage());
 }

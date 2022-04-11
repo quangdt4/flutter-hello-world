@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 
 import '../model/Product.dart';
 
+// EDIT/ADD PRODUCT
+
+
 class M03EditProduct extends StatefulWidget {
   var _initialData;
 
@@ -151,11 +154,10 @@ class _M03EditProductState extends State<M03EditProduct> {
     );
   }
 
-  void onClickSaveProduct() {
-    setState(() {
-      listProduct.add(Product(_controllerTitle.text, _controllerPath.text,
-          int.parse(_controllerPrice.text), false));
-      Navigator.pop(context);
-    });
+  void onClickSaveProduct() async {
+    listProduct.add(Product(_controllerTitle.text, _controllerPath.text,
+        int.parse(_controllerPrice.text), false));
+    Navigator.pop(context);
+    setState(() {});
   }
 }

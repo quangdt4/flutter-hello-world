@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../model/Product.dart';
 import 'M03EditProduct.dart';
 
+// DETAIL ITEM
+
 class M02Detail extends StatelessWidget {
   Product product;
 
