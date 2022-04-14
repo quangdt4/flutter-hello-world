@@ -8,7 +8,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:helloworld/lesson5-exercise/model/AlbumRes.dart';
 import 'package:helloworld/lesson5-exercise/model/AlbumReq.dart';
-import 'API.dart';
+import 'lesson5-exercise/API.dart';
 
 void main() => runApp(const MyApp());
 

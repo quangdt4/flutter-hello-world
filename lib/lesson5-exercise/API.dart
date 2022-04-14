@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'lesson5-exercise/model/AlbumRes.dart';
+import 'model/AlbumRes.dart';
 import 'package:http/http.dart' as http;
 
-import 'lesson5-exercise/model/AlbumReq.dart';
+import 'model/AlbumReq.dart';
 
 Future<AlbumRes> fetchAlbum() async {
   //GET - FETCH
