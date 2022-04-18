@@ -20,7 +20,7 @@ context.read<CartTotal>() hoặc context.watch<CartTotal>()
  */
 
 import 'package:flutter/material.dart';
-import 'package:helloworld/lesson9-provider/homepage_loading.dart';
+import 'package:helloworld/lesson9-provider/widget-loading.dart';
 
 import 'package:provider/provider.dart';
 
@@ -52,13 +52,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fetch Data Example',
+      title: 'Provider Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Fetch Data Example'),
+          title: const Text('Provider Example'),
         ),
         body: Selector<HomeController, bool>(
           selector: (_, controller) => controller.homeState.loading,
